@@ -1,0 +1,9 @@
+bin
+lib
+.idea
+.DS_Store
+pyvenv.cfg
+__pycache__/
+
+cache/*
+!cache/README.md
