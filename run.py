@@ -55,6 +55,13 @@ def authorized_event(data):
     print(data["message"])
     jwt_token = data["jwt_token"]
 
+    # emit (this client is ready to take task) event
+    sio.emit(
+        'ready',
+        {"message": "Hi! I am ready to take tasks!"},
+        namespace='/daemon'
+    )
+
 
 # if server fails to authorize the client
 @sio.on('unauthorized', namespace='/daemon')
