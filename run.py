@@ -1,5 +1,6 @@
 import sys
 import socketio
+import time
 from clustering_handler import handle_clustering
 
 
@@ -55,6 +56,7 @@ def authorized_event(data):
     print(data["message"])
     jwt_token = data["jwt_token"]
 
+    time.sleep(5)  # wait for 5 seconds
     # emit (this client is ready to take task) event
     sio.emit(
         'ready',

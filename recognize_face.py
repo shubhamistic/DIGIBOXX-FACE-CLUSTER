@@ -10,7 +10,7 @@ def compare_face_with_multiple_images(input_image, person_images, threshold=0.6)
     input_face_encodings = face_recognition.face_encodings(input_image)
 
     if not input_face_encodings:
-        return {"matched_score": 0}
+        return {"success": False}
 
     input_face_encoding = input_face_encodings[0]
 
@@ -38,6 +38,12 @@ def compare_face_with_multiple_images(input_image, person_images, threshold=0.6)
     # Check if more than 50% of the images match
     if matches.count(True) > len(person_images) / 2:
         matched_score = max(similarity_scores)
-        return {"matched_score": matched_score}
+        return {
+            "success": True,
+            "matched_score": matched_score
+        }
     else:
-        return {"matched_score": 0}
+        return {
+            "success": True,
+            "matched_score": 0
+        }
